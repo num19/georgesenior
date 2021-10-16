@@ -3,5 +3,8 @@ package cz.teamnull.georgesenior.ui.main
 import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    fun check() = pin == "2021"
+
+    var pin = ""
 }
