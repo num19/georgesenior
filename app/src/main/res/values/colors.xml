@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <color name="not_white">#f5f6fa</color>
     <color name="george_blue">#1C457D</color>
     <color name="gradient_start">#1A67D1</color>
     <color name="gradient_end">#9FBAD6</color>

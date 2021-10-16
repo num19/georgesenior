@@ -6,4 +6,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/account_bg"
-    tools:context=".ui.account.AccountFragment"/>
+    tools:context=".ui.account.AccountFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="24dp"
+        app:cardBackgroundColor="@color/not_white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="\@HackPrague"
+            android:textColor="@color/george_blue"
+            android:textSize="40sp" />
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/buttonListen"
+        android:clickable="true"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:elevation="8dp"
+        android:background="@drawable/button_bg_normal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true">
+
+        <ImageView
+            app:tint="@color/white"
+            android:id="@+id/imageListening"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_mic_24"
+            app:srcCompat="@drawable/ic_baseline_mic_24" />
+
+        <TextView
+            android:id="@+id/text_view_listening"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Říct to"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
