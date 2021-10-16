@@ -1,17 +1,16 @@
 package cz.teamnull.georgesenior.ui.account
 
-import android.graphics.PorterDuff
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.animation.RotateAnimation
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import cz.teamnull.georgesenior.R
 import cz.teamnull.georgesenior.databinding.AccountFragmentBinding
@@ -35,31 +34,35 @@ class AccountFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
         binding.buttonListen.setOnClickListener {
-            viewModel.isListening = !viewModel.isListening
-            updateListeningButton()
+            if (checkPermission() && !viewModel.isListening) {
+                viewModel.listen()
+            }
         }
         micAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.mic)
+        viewModel.onPrepared = {
+            updateListeningButton()
+        }
+        viewModel.onFinished = {
+            updateListeningButton()
+        }
+        viewModel.init(requireContext())
+    }
+
+    private fun checkPermission() = if(ContextCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED){
+        ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+        false
+    } else {
+        true
     }
 
     private fun updateListeningButton() = binding.apply {
         if (viewModel.isListening) {
-            /*imageListening.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.white
-                ), PorterDuff.Mode.SRC_IN
-            )*/
             imageListening.startAnimation(micAnim)
-            textViewListening.text = "Poslouchám"
+            textViewListening.text = "Mluvte"
         } else {
-            /*imageListening.setColorFilter(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.george_blue
-                ), PorterDuff.Mode.SRC_IN
-            )*/
             imageListening.clearAnimation()
-            textViewListening.text = "Říct to"
+            textViewListening.text = "Říct něco"
         }
 
     }
