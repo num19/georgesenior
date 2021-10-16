@@ -8,6 +8,7 @@ class AccountActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.addFlags(128)
         setContentView(R.layout.account_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
