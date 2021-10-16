@@ -12,6 +12,9 @@ import android.widget.Toast
 import androidx.core.view.children
 import cz.teamnull.georgesenior.*
 import cz.teamnull.georgesenior.databinding.LoginFragmentBinding
+import cz.teamnull.georgesenior.utils.gotoAndFinish
+import cz.teamnull.georgesenior.utils.pop
+import cz.teamnull.georgesenior.utils.showMessage
 
 class LoginFragment : Fragment() {
 

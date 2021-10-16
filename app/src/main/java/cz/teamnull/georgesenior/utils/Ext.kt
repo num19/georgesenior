@@ -1,7 +1,8 @@
-package cz.teamnull.georgesenior
+package cz.teamnull.georgesenior.utils
 
 import android.app.Activity
 import android.content.Intent
+import cz.teamnull.georgesenior.MessageActivity
 
 fun String.pop() = if (this.isEmpty()) "" else this.dropLast(1)
 
