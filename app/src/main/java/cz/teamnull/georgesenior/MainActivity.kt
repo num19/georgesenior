@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
         if (!checkPermission()) return
         recognizer = SpeechRecognizer.createSpeechRecognizer(this)
         textView = findViewById(R.id.textView)
@@ -36,7 +39,6 @@ class MainActivity : AppCompatActivity() {
     fun onClickRecognize(v: View) {
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        //intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.forLanguageTag("cs-CZ"))
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "cs")
         recognizer.setRecognitionListener(object: RecognitionListener {
             override fun onReadyForSpeech(p0: Bundle?) {
