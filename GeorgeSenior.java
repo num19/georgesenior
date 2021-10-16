@@ -1,22 +1,21 @@
-/*TODO
-Jak to rozpozná slovo email?
-Jak se rozpoznají jednotlivá čísla jako 1 2 3...
-*/
+package georgeSenior;
+
 public class GeorgeSenior
 {
   public static void main(String[] args){
-    String speech = "Na čem můžu ušetřit";
+    String speech = "jak se jmenuji";
     String response = processing(speech);
     System.out.println(response);
   }
 
   public static String processing(String speech){
-    speech.toLowerCase();
+    speech = speech.toLowerCase();
     String response = "";
 
 //Větev s osobními údaji
     if(speech.contains("jak") || speech.contains("kd") ){
            if(speech.contains("jmenuju") ||
+        	  speech.contains("jmenuji") ||
              (speech.contains("jméno") && speech.contains("moje")))
         response = getName();
 
@@ -87,8 +86,8 @@ public class GeorgeSenior
   }
 
   public static String getMainExpense(int index){
-    String[] expenses = {"MC Donald - 95%", "Rolls-Royce - 5%"};
-    return(expenses[index]);
+    String[] expenses = {"MC Donald - 95% ", "Rolls-Royce - 5%"};
+    return("Největší položkou je: " + expenses[index]);
   }
 
   public static String getAccBalance(){
