@@ -9,26 +9,27 @@
     tools:context=".ui.main.LoginFragment">
 
     <Button
-        android:layout_margin="10dp"
+        android:gravity="center"
         android:id="@+id/buttonNumber0"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_margin="10dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
         android:text="0"
         android:textSize="48sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/buttonNumber9"
-        app:layout_constraintStart_toStartOf="@+id/buttonNumber7"
+        app:layout_constraintStart_toEndOf="@+id/buttonNumber8"
         app:layout_constraintTop_toBottomOf="@+id/buttonNumber8" />
 
     <Button
-        android:layout_margin="10dp"
         android:id="@+id/buttonNumber9"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_margin="10dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
+        android:gravity="center"
         android:text="9"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -36,12 +37,13 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonNumber6" />
 
     <Button
+        android:gravity="center"
         android:layout_margin="10dp"
         android:id="@+id/buttonNumber7"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
         android:text="7"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -49,12 +51,13 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonNumber4" />
 
     <Button
+        android:gravity="center"
         android:layout_margin="10dp"
         android:id="@+id/buttonNumber8"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
         android:text="8"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -63,12 +66,13 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonNumber5" />
 
     <Button
-        android:layout_margin="10dp"
         android:id="@+id/buttonNumber1"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_margin="10dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
+        android:gravity="center"
         android:text="1"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -76,12 +80,13 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonNumber2" />
 
     <Button
+        android:gravity="center"
         android:layout_margin="10dp"
         android:id="@+id/buttonNumber2"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
         android:text="2"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -91,12 +96,13 @@
         app:layout_constraintStart_toEndOf="@+id/buttonNumber4" />
 
     <Button
+        android:gravity="center"
         android:layout_margin="10dp"
         android:id="@+id/buttonNumber3"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
         android:text="3"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -104,12 +110,13 @@
         app:layout_constraintStart_toEndOf="@+id/buttonNumber2" />
 
     <Button
-        android:layout_margin="10dp"
         android:id="@+id/buttonNumber6"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_margin="10dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
+        android:gravity="center"
         android:text="6"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -123,7 +130,8 @@
         android:layout_height="80dp"
         android:layout_margin="10dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
+        android:gravity="center"
         android:text="4"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -137,7 +145,8 @@
         android:layout_height="80dp"
         android:layout_margin="10dp"
         android:background="@drawable/login_button_bg"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="monospace"
+        android:gravity="center"
         android:text="5"
         android:textSize="48sp"
         android:textStyle="bold"
@@ -151,30 +160,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:text="Zadejte PIN"
         android:textColor="#FFFFFF"
-        android:textSize="32sp"
+        android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonNumber2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/buttonUnknownPin"
+        android:layout_width="260dp"
+        android:layout_height="80dp"
         android:layout_margin="10dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/login_button_bg"
+        android:gravity="center"
         android:text="Neznám PIN"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonNumber0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPass"
+        android:gravity="center"
+        android:id="@+id/text_view_pin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
@@ -186,4 +198,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:text="****" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_button_bg"
+        android:gravity="center"
+        android:text="ZPĚT"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@+id/buttonNumber7"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNumber7" />
 </androidx.constraintlayout.widget.ConstraintLayout>
