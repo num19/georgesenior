@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/template"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/templates_bg"
+    tools:context=".ui.template.TemplateFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                app:cardBackgroundColor="@color/not_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="24dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_local_phone_24"
+                        app:srcCompat="@drawable/ic_baseline_local_phone_24"
+                        app:tint="@color/blue_weak" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:text="Dobít telefon"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView7"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="200 Kč"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView8"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="5206846282/0800"
+                        android:textColor="@color/george_blue"
+                        android:textSize="32sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                app:cardBackgroundColor="@color/not_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="24dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_account_circle_24"
+                        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+                        app:tint="@color/blue_weak" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:text="Pavlík"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView4"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="500 Kč"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView5"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="5206846282/0800"
+                        android:textColor="@color/george_blue"
+                        android:textSize="32sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="24dp"
+                app:cardBackgroundColor="@color/not_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="24dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_account_circle_24"
+                        app:srcCompat="@drawable/ic_baseline_account_circle_24"
+                        app:tint="@color/blue_weak" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:text="Maruška"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView1"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="500 Kč"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView2"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="1710413220/0800"
+                        android:textColor="@color/george_blue"
+                        android:textSize="32sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="24dp"
+                app:cardBackgroundColor="@color/not_white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="24dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_supervisor_account_24"
+                        app:srcCompat="@drawable/ic_baseline_supervisor_account_24"
+                        app:tint="@color/blue_weak" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:text="Klub seniorů"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView10"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="250 Kč"
+                        android:textColor="@color/george_blue"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView11"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="4331058434/0800"
+                        android:textColor="@color/george_blue"
+                        android:textSize="32sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,11 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import cz.teamnull.georgesenior.InfoActivity
 import cz.teamnull.georgesenior.R
+import cz.teamnull.georgesenior.TemplateActivity
 import cz.teamnull.georgesenior.databinding.AccountFragmentBinding
+import cz.teamnull.georgesenior.utils.goto
 
 class AccountFragment : Fragment() {
 
@@ -38,6 +41,8 @@ class AccountFragment : Fragment() {
                 viewModel.listen()
             }
         }
+        binding.cardSend.setOnClickListener { activity.goto(TemplateActivity::class.java) }
+        binding.cardReceive.setOnClickListener { activity.goto(InfoActivity::class.java) }
         micAnim = AnimationUtils.loadAnimation(requireContext(), R.anim.mic)
         viewModel.onPrepared = {
             updateListeningButton()
@@ -45,7 +50,7 @@ class AccountFragment : Fragment() {
         viewModel.onFinished = {
             updateListeningButton()
         }
-        viewModel.init(requireContext())
+        viewModel.init(requireActivity())
     }
 
     private fun checkPermission() = if(ContextCompat.checkSelfPermission(requireContext(),

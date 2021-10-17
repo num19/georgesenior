@@ -5,6 +5,7 @@
     <color name="george_blue">#1C457D</color>
     <color name="gradient_start">#1A67D1</color>
     <color name="gradient_end">#9FBAD6</color>
+    <color name="blue_weak">#B9C8D8</color>
 
     <color name="primary">@color/gradient_start</color>
     <color name="primaryVariant">@color/gradient_end</color>

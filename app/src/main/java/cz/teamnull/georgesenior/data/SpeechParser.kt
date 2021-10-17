@@ -1,13 +1,16 @@
 package cz.teamnull.georgesenior.data
 
+import java.lang.Integer.max
 import java.text.Normalizer
+import java.text.SimpleDateFormat
+import java.util.*
 
 object SpeechParser {
 
-    private const val USE_CASE_THRESHOLD = 0.2
+    private const val USE_CASE_THRESHOLD = 0.3
 
     private val USE_CASES = arrayOf(
-        UseCasePrototype(null, "Hello", ::hello, "ahoj"),
+        UseCasePrototype(null, "Hello", ::hello, "ahoj", "cau", "nazdar", "cus"),
 
         UseCasePrototype(
             null, "AccountBalance", ::tellAccountBalance, "ahoj kolik mam na uctu",
@@ -15,7 +18,12 @@ object SpeechParser {
             "kolik mam na konte",
             "ukaz mi stav konta",
             "kolik mam penez",
-            "prosim rekni mi stav uctu"
+            "prosim rekni mi stav uctu",
+            "stav uctu",
+            "stav konta",
+            "konto",
+            "ucet",
+            "penize"
         ),
 
         UseCasePrototype(
@@ -34,13 +42,13 @@ object SpeechParser {
 
         UseCasePrototype(
             null, "BlockAccount", ::blockAccount, "pomoc ztratila jsem kartu",
-            "hej chci zablokovat svoji kreditní kartu",
+            "hej chci zablokovat svoji kreditni kartu",
             "prosim zamezte pristupu k moji karte",
             "ahoj co mam delat kdyz mi ukrali debetni kartu"
         ),
 
         UseCasePrototype(
-            null, "BankID", ::tellMyBankID, "hej jake je moje cislo uctu",
+            null, "BankID", ::tellAccountId, "hej jake je moje cislo uctu",
             "ahoj jak zjistim cislo uctu",
             "prosim rekni u jake jsem banky",
             "cislo meho bankovniho uctu je"
@@ -51,7 +59,13 @@ object SpeechParser {
             "prosim preved penize",
             "chci prevod penez",
             "odesli castku",
-            "hej preposli castku"
+            "hej preposli castku",
+            "chci poslat penize",
+            "chci je poslat",
+            "odesli penize",
+            "posli penize",
+            "poslat penize",
+            "odosli penize"
         ),
 
         UseCasePrototype(
@@ -64,7 +78,9 @@ object SpeechParser {
             "chci poslat penize",
             "chci je poslat",
             "odesli penize",
-            "posli penize"
+            "posli penize",
+            "poslat penize",
+            "odosli penize"
         ),
         UseCasePrototype(
             "SendMoneyName", "SendMoneyNameAmount", ::sendMoneyOk,
@@ -74,24 +90,88 @@ object SpeechParser {
             "odesli korun",
             "odesli koruny",
             "korun"
-        )
+        ),
+
+        UseCasePrototype(
+            "SendMoney", "SendMoneyNameCancel", ::dismiss,
+            "ukonci",
+            "ukoncit",
+            "skonci",
+            "skonci",
+            "zastav",
+            "neposilej",
+            "nechci",
+            "nepokracuj",
+            "nedelej to",
+            "nech me byt"
+        ),
+        UseCasePrototype(
+            "SendMoneyName", "SendMoneyAmountCancel", ::dismiss,
+            "ukonci",
+            "ukoncit",
+            "skonci",
+            "skonci",
+            "zastav",
+            "neposilej",
+            "nechci",
+            "nepokracuj",
+            "nedelej to",
+            "nech me byt"
+        ),
+
+        UseCasePrototype(null, "Wrong", ::wrong,
+            "kokot", "pica", "jebe", "kurvo",
+            "kurva", "kokot", "k****", "p***", "mrdka"
+        ),
+
+        UseCasePrototype(
+            null, "Time", ::tellTime,
+            "kolik je hodin",
+            "jaky je cas",
+            "rekni mi cas"
+        ),
+        UseCasePrototype(
+            null, "Time", ::tellDate,
+            "jaky je datum",
+            "kolikateho je dnes",
+            "rekni mi datum",
+            "datum"
+        ),
 
     )
 
+    private fun tellTime(u: UseCase): Boolean {
+        val sdf = SimpleDateFormat("hh:mm")
+        val currentDate = sdf.format(Date())
+        output("Je $currentDate")
+        return true
+    }
+
+    private fun tellDate(u: UseCase): Boolean {
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val currentDate = sdf.format(Date())
+        output("Dnes je $currentDate")
+        return true
+    }
+
+    private fun wrong(u: UseCase): Boolean {
+        output("Mínus 10 korun")
+        return true
+    }
 
     private fun hello(u: UseCase): Boolean {
         output("Ahoj")
-        return false
+        return true
     }
 
-    private fun tellMyBankID(u: UseCase): Boolean {
-        output("Blokuji kreditní kartu patřící Vašemu účtu")
-        return false
+    private fun tellAccountId(u: UseCase): Boolean {
+        output("2 1 2 8 3 7 2 0 0 4 / 0 8 0 0")
+        return true
     }
 
     private fun blockAccount(u: UseCase): Boolean {
-        output("Blokuji kreditní kartu patřící Vašemu účtu")
-        return false
+        output("Platební karta byla zablokována, budeme Vás kontaktovat")
+        return true
     }
 
     private fun sendMoneyAskWho(u: UseCase): Boolean {
@@ -101,17 +181,17 @@ object SpeechParser {
 
     private fun tellPermPayment(u: UseCase): Boolean {
         output("Zadal jsem tvalou platbu na účet: 19123457/0710")
-        return false
+        return true
     }
 
     private fun tellMainExpense(u: UseCase): Boolean {
-        output("Největší výdaje jsou u Mc Donalds - 95%")
-        return false
+        output("Největší výdaje jsou u McDonald's - 95%")
+        return true
     }
 
     private fun tellAccountBalance(u: UseCase): Boolean {
-        output("9999999 Kč")
-        return false
+        output("42069.34 Kč")
+        return true
     }
 
     private fun sendMoneyAskAmount(u: UseCase): Boolean {
@@ -121,8 +201,22 @@ object SpeechParser {
 
     private fun sendMoneyOk(u: UseCase): Boolean {
         output("Platba vykonána")
+        if (history.size == 3) {
+            var s = ""
+            s += history[1].second.find { it.matches("[A-Z].*".toRegex()) } ?: ""
+            s += " "
+            s += history[2].second.find { it.matches("[0-9]+".toRegex()) }?.toInt() ?: ""
+            output(s)
+        }
         return true
     }
+
+    private fun dismiss(u: UseCase): Boolean {
+        output("Ukončuji proces.")
+        return true
+    }
+
+
 
     private fun error() = output("Zopakujte to znovu")
 
@@ -140,7 +234,9 @@ object SpeechParser {
 
     fun parse(text: String): Boolean {
         println("parse: $text")
-        val userWords = removeAccents(text).split(" ").toSet()
+        val userWords = text.split(" ").map {
+            if (it.matches("[A-Z].*".toRegex())) it else removeAccents(it)
+        }.toSet()
         var results = evaluate(userWords)
 
         results = if (history.isNotEmpty()) {
@@ -166,8 +262,8 @@ object SpeechParser {
         val bestPhrase = bestResult.bestPhrase
         val difference = userWords.minus(bestPhrase)
         print(difference)
-        val end = bestResult.useCase.handler.invoke(bestResult.useCase)
         history.add(Pair(bestResult, difference))
+        val end = bestResult.useCase.handler.invoke(bestResult.useCase)
         if (end) history.clear()
         return end
     }
@@ -180,8 +276,9 @@ object SpeechParser {
             uc.phrases.forEachIndexed { index, words ->
                 var count = 0
                 //userWords.forEach { if (words.contains(it)) count++ }
-                words.forEach { if (userWords.contains(it)) count++ }
-                val score = count / words.size.toFloat()
+                //words.forEach { if (userWords.contains(it)) count++ }
+                //val score = count / words.size.toFloat()
+                val score = words.intersect(userWords).size / max(userWords.size, words.size).toFloat()
                 if (score > bestScore) {
                     bestScore = score
                     bestIndex = index
