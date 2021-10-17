@@ -13,7 +13,9 @@ import android.speech.tts.UtteranceProgressListener
 import android.speech.tts.Voice
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import cz.teamnull.georgesenior.InfoActivity
 import cz.teamnull.georgesenior.data.SpeechParser
+import cz.teamnull.georgesenior.utils.goto
 import kotlinx.coroutines.Dispatchers
 import java.util.*
 
@@ -32,7 +34,25 @@ class AccountViewModel : ViewModel() {
     private lateinit var timer: CountDownTimer
     private var willListenLater = false
 
+    companion object {
+        private lateinit var model: AccountViewModel
+        private lateinit var act: Activity
+        var balance = 42069.34
+        set(value) {
+            field = value
+            model.balanceChanged()
+        }
+        fun action(s: String) {
+            if (s == "receive") act.goto(InfoActivity::class.java)
+        }
+    }
+
+    lateinit var balanceChanged: (() -> Unit)
+
+
     fun init(activity: Activity) {
+        act = activity
+        model = this
         synthesizer = TextToSpeech(activity, synthesizerListener)
         SpeechParser.output = { text ->
             Log.d("SYNTHESIZER", "says: $text")

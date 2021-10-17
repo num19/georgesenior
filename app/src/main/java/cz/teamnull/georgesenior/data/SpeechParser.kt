@@ -1,5 +1,6 @@
 package cz.teamnull.georgesenior.data
 
+import cz.teamnull.georgesenior.ui.account.AccountViewModel
 import java.lang.Integer.max
 import java.text.Normalizer
 import java.text.SimpleDateFormat
@@ -58,7 +59,11 @@ object SpeechParser {
             "cislo meho bankovniho uctu je"
         ),
 
-        UseCasePrototype("SendMoney", null, ::sendMoneyAskWho, "ahoj posli penize na ucet",
+        UseCasePrototype("ReceiveMoney", null, ::receiveMoney,
+            "chci prijmout penize", "chci penize", "prijmout penize", "prijmout platbu"
+        ),
+
+        UseCasePrototype("SendMoney",null, ::sendMoneyAskWho, "ahoj posli penize na ucet",
             "prosim preved penize",
             "chci prevod penez",
             "odesli castku",
@@ -69,7 +74,11 @@ object SpeechParser {
             "posli penize",
             "poslat penize",
             "odosli penize",
-            "dej penize"
+            "dej penize",
+            "platit",
+            "chci platit",
+            "posli korun",
+            "odesli korun"
         ),
 
         UseCasePrototype("SendMoneyName", "SendMoney", ::sendMoneyAskAmount,
@@ -121,7 +130,7 @@ object SpeechParser {
 
         UseCasePrototype("Wrong", null, ::wrong,
             "kokot", "pica", "jebe", "kurvo",
-            "kurva", "kokot", "k****", "p***", "mrdka"
+            "kurva", "hovno", "k****", "p***", "mrdka", "mrdka", "chuj"
         ),
 
         UseCasePrototype("Time", null, ::tellTime,
@@ -137,6 +146,11 @@ object SpeechParser {
         ),
 
     )
+
+    private fun receiveMoney(userWords: Set<String>) : Boolean{
+        AccountViewModel.action("receive")
+        return true
+    }
 
     private fun tellTime(userWords: Set<String>): Boolean {
         val sdf = SimpleDateFormat("hh:mm")
@@ -174,9 +188,11 @@ object SpeechParser {
 
     private fun sendMoneyAskWho(userWords: Set<String>): Boolean {
         val name = userWords.find { it.matches("[A-Z].*".toRegex()) }
-        val amount = userWords.find { it.matches("[0-9].*".toRegex()) }
+        var amount = userWords.find { it.matches("[0-9].*".toRegex()) }
         if (name != null && amount != null) {
             output("$name bylo odesláno $amount")
+            if (amount.endsWith("Kč") || amount.endsWith("kč")) amount = amount.dropLast(2)
+            AccountViewModel.balance -= amount.toFloat()
             return true
         }
         output("Komu poslat peníze?")
@@ -205,11 +221,13 @@ object SpeechParser {
 
     private fun sendMoneyOk(userWords: Set<String>): Boolean {
         if (history.size == 3) {
-            var s = ""
-            s += history[2].second.find { it.matches("[0-9].*".toRegex()) } ?: ""
+            var amount = history[2].second.find { it.matches("[0-9].*".toRegex()) } ?: "0"
+            var s = amount
             s += " bylo odesláno "
             s += history[1].second.find { it.matches("[A-Z].*".toRegex()) } ?: ""
             output(s)
+            if (amount.endsWith("Kč")) amount = amount.dropLast(2)
+            AccountViewModel.balance -= amount.toFloat()
         } else {
             output("Platba vykonána")
         }
@@ -217,7 +235,8 @@ object SpeechParser {
     }
 
     private fun dismiss(userWords: Set<String>): Boolean {
-        output("Ukončuji proces.")
+        output("Okej tak nic")
+        history.clear()
         return true
     }
 
