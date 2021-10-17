@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
         binding.buttonUnknownPin.setOnClickListener {
             Toast.makeText(activity, "TODO", Toast.LENGTH_SHORT).show()
         }
-        activity.gotoAndFinish(AccountActivity::class.java) // TODO: off
+        // activity.gotoAndFinish(AccountActivity::class.java) // TODO: off
     }
 
     private val onClick: ((String) -> Unit) = {
