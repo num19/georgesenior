@@ -36,6 +36,8 @@ class AccountFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        viewModel.balanceChanged = { activity?.runOnUiThread { updateBalance() } }
+        updateBalance()
         binding.buttonListen.setOnClickListener {
             if (checkPermission() && !viewModel.isListening) {
                 viewModel.listen()
@@ -51,6 +53,7 @@ class AccountFragment : Fragment() {
             updateListeningButton()
         }
         viewModel.init(requireActivity())
+
     }
 
     private fun checkPermission() = if(ContextCompat.checkSelfPermission(requireContext(),
@@ -59,6 +62,10 @@ class AccountFragment : Fragment() {
         false
     } else {
         true
+    }
+
+    private fun updateBalance() {
+        binding.textViewMoney.text = String.format("% .2f Kč", AccountViewModel.balance)
     }
 
     private fun updateListeningButton() = binding.apply {
