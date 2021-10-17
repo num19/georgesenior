@@ -1,4 +1,4 @@
-package cz.teamnull.georgesenior.ui.main
+package cz.teamnull.georgesenior.ui.login
 
 import androidx.lifecycle.ViewModel
 

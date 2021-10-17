@@ -2,7 +2,7 @@ package cz.teamnull.georgesenior
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import cz.teamnull.georgesenior.ui.main.LoginFragment
+import cz.teamnull.georgesenior.ui.login.LoginFragment
 
 class LoginActivity : AppCompatActivity() {
 
