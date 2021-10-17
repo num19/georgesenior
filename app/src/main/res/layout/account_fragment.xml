@@ -11,7 +11,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_margin="24dp"
         app:cardBackgroundColor="@color/not_white"
         app:cardCornerRadius="8dp"
@@ -20,10 +20,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="32dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_account_balance_wallet_24"
+                app:tint="@color/blue_weak" />
 
             <TextView
                 android:id="@+id/textViewMyAccount"
@@ -40,11 +48,12 @@
                 android:id="@+id/textViewMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewMyAccount"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
-                android:text="300 Kč"
+                android:text="42 069,34 Kč"
                 android:textColor="@color/george_blue"
                 android:textSize="40sp" />
 
@@ -52,13 +61,14 @@
                 android:id="@+id/textViewAccountId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewMoney"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="2128372004/0800"
                 android:textColor="@color/george_blue"
                 android:textSize="32sp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -68,6 +78,8 @@
         android:layout_height="120dp"
         android:layout_margin="24dp"
         app:cardBackgroundColor="@color/not_white"
+        android:focusable="true"
+        android:clickable="true"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +95,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_baseline_mail_24"
-                app:tint="@color/gradient_end" />
+                app:tint="@color/blue_weak" />
 
             <TextView
                 android:id="@+id/textViewSend"
@@ -104,6 +116,8 @@
         android:id="@+id/cardReceive"
         android:layout_width="0dp"
         android:layout_height="120dp"
+        android:focusable="true"
+        android:clickable="true"
         android:layout_margin="24dp"
         app:cardBackgroundColor="@color/not_white"
         app:cardCornerRadius="8dp"
@@ -121,7 +135,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_baseline_post_add_24"
-                app:tint="@color/gradient_end" />
+                app:tint="@color/blue_weak" />
 
             <TextView
                 android:id="@+id/textViewReceive"

@@ -19,25 +19,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GeorgeSenior">
         <activity
+            android:name=".InfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TemplateActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AccountActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
-
+            android:exported="true" />
         <activity
             android:name=".MessageActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
