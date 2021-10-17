@@ -1,6 +1,5 @@
-package cz.teamnull.georgesenior.ui.main
+package cz.teamnull.georgesenior.ui.login
 
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -45,6 +44,7 @@ class LoginFragment : Fragment() {
         binding.buttonUnknownPin.setOnClickListener {
             Toast.makeText(activity, "TODO", Toast.LENGTH_SHORT).show()
         }
+        activity.gotoAndFinish(AccountActivity::class.java) // TODO: off
     }
 
     private val onClick: ((String) -> Unit) = {
